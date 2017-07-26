@@ -1,18 +1,23 @@
 import calendar
+import datetime
 
-term_loan = 4
-day = 15
-month = 8
-year = 2017
-amort = []
+term_loan_amort_start_date = datetime.datetime.now()
+term_loan_term = 4
 
-for i in range(term_loan * 12):
-    last_day = calendar.monthrange(year, month)[1]
-    amort.append({'month':month, 'last_day':last_day, 'year':year})
-    if month < 12:
-        month += 1
-    else:
-        month = 1
-        year += 1
+# Calculate Term Loan Schedule
+if term_loan_amort_start_date.month == 12:
+  month = 1
+else:
+  month = term_loan_amort_start_date.month + 1
+year = term_loan_amort_start_date.year
+term_schedule = []
+for i in range(term_loan_term * 12):
+  last_day = calendar.monthrange(year, month)[1]
+  term_schedule.append({'month':month, 'last_day':last_day, 'year':year})
+  if month < 12:
+    month += 1
+  else:
+    month = 1
+    year += 1
         
-print amort
+print term_schedule
