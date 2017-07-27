@@ -13,7 +13,7 @@ year = term_loan_amort_start_date.year
 term_schedule = []
 for i in range(term_loan_term * 12):
   last_day = calendar.monthrange(year, month)[1]
-  term_schedule.append({'month':month, 'last_day':last_day, 'year':year})
+  term_schedule.append("%s %d, %d" % (calendar.month_name[month], last_day, year))
   if month < 12:
     month += 1
   else:
